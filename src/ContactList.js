@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import ShowContact from './ShowContact'
+/* Componente que se preocupa em renderizar a lista
+ordenada de contatos recebido via props por App.js */
 
 class ContactList extends Component{
 
@@ -9,7 +12,7 @@ class ContactList extends Component{
 		return(
 			<ol>
 				{
-					contacts.map(c => <li>{c.name}</li>)
+					contacts.map(c => <ShowContact contact={c}/>)
 				}
 			</ol>
 		)
