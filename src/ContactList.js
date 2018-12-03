@@ -3,7 +3,16 @@ import React, { Component } from 'react'
 class ContactList extends Component{
 
 	render(){
-		return(<div>Olá, sou um componente React!</div>)
+		//Destructuring ES6
+		const {contacts} = this.props
+
+		return(
+			<ol>
+				{
+					contacts.map(c => <li>{c.name}</li>)
+				}
+			</ol>
+		)
 	}
 }
 

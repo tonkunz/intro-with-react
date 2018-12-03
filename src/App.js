@@ -9,6 +9,8 @@ const contacts = [
   {name: 'Rodrigo', email:'rodrigokunz@gmail.com'}
 ]
 
+/* Enviamos os contatos ao componente ContactList por meio de props
+Documentação: https://reactjs.org/docs/components-and-props.html */
 class App extends Component {
   render() {
     return (
@@ -26,12 +28,8 @@ class App extends Component {
           >
           </a>
         </header>
-        <ol>
-          {
-            contacts.map(c => <li>{c.name}</li>)
-          }
-        </ol>
-        <ContactList />
+        
+        <ContactList contacts={contacts}/>
       </div>
     );
   }
