@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ContactList from './ContactList'
 
 const contacts = [
   {name: 'Everton', email: 'ehokeverton@gmail.com'},
@@ -30,6 +31,7 @@ class App extends Component {
             contacts.map(c => <li>{c.name}</li>)
           }
         </ol>
+        <ContactList />
       </div>
     );
   }
