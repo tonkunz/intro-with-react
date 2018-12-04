@@ -12,7 +12,7 @@ class ContactList extends Component{
 		return(
 			<ol>
 				{
-					contacts.map(c => <ShowContact contact={c}/>)
+					contacts.map((c, i) => <li key={i}> <ShowContact contact={c}/> </li>)
 				}
 			</ol>
 		)

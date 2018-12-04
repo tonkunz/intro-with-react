@@ -10,9 +10,9 @@ class ShowContact extends Component {
 		//Destructuring ES6
 		const {contact} = this.props
 
-		return (<li>{
+		return (<p>{
 			`Contact Name: ${contact.name} - Email: ${contact.email}`
-		}</li>)
+		}</p>)
 	}
 }
 
