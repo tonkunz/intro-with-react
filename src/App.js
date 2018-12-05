@@ -2,16 +2,19 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ContactList from './ContactList'
-
-const contacts = [
-  {name: 'Everton', email: 'ehokeverton@gmail.com'},
-  {name: 'Karine', email:'karinewagner@gmail.com'},
-  {name: 'Rodrigo', email:'rodrigokunz@gmail.com'}
-]
+import AddContact from './AddContact'
 
 /* Enviamos os contatos ao componente ContactList por meio de props
 Documentação: https://reactjs.org/docs/components-and-props.html */
 class App extends Component {
+  state = {
+    contacts : [
+      {name: 'Everton', email: 'ehokeverton@gmail.com'},
+      {name: 'Karine', email:'karinewagner@gmail.com'},
+      {name: 'Rodrigo', email:'rodrigokunz@gmail.com'}
+    ]
+  }
+
   render() {
     return (
       <div className="App">
@@ -28,8 +31,8 @@ class App extends Component {
           >
           </a>
         </header>
-        
-        <ContactList contacts={contacts}/>
+        <ContactList contacts={this.state.contacts}/>
+        <AddContact />
       </div>
     );
   }
