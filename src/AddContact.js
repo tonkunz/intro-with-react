@@ -13,32 +13,53 @@ dentro do DOM. Os benefícios dos componentes controlados são:
 
 class AddContact extends Component {
 	state = {
-		query : '',
+		contact : {
+			name: '',
+			email: '',
+		},
 	}
 
-	//Método responsável por atualizar nosso state Query
-	handleInptut = (value) => {
-		this.setState( () => ({
-			query : value,
+	//Método responsável por atualizar nosso state
+	handleInputChange = (event) => {
+		const {name, value} = event.target
+
+		this.setState( (currentState) => ({
+			...currentState, contact : {
+				...currentState.contact, [name] : value,
+			}
 		}))
 	}
 
+	handleSubmitForm = (event) => {
+		event.preventDefault(); //Para que a página não recarregue, como faz por padrão!
+		this.props.submitUser(this.state.contact)
+	}
+
 	isDisabled = () => {
-		return this.state.query === '';
+		return this.state.contact.name === '' || this.state.contact.email === '';
 	}
 
 	render(){
 		//Destructuring ES6
-		const {query} = this.state
+		const {name,email} = this.state
 
 		return(<div>
-			<form onSubmit='#'>
-				Nome: 
-				<input 
+			<form onSubmit={this.handleSubmitForm}>
+				Name: 
+				<input
+					name='name'
 					type='text'
 					placeholder='Enter the name'
-					value={query}
-					onChange={(event) => this.handleInptut(event.target.value)}
+					value={name}
+					onChange={this.handleInputChange}
+				/>
+				Email: 
+				<input
+					name='email'
+					type='text'
+					placeholder='Enter the email'
+					value={email}
+					onChange={this.handleInputChange}
 				/>
 				<button disabled={this.isDisabled()}>Send</button>
 			</form>

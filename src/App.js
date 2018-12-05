@@ -15,6 +15,15 @@ class App extends Component {
     ]
   }
 
+  /* Este é nosso método responsável por inserir um novo contato que
+  será enviado pelo componente filho AddContact. Note que este método
+  é enviado via props para o componente filho em questão. */
+  handleAddContact = (contact) => {
+    this.setState( currentState => ({
+      contacts : [...currentState.contacts, contact]
+    }))
+  }
+
   render() {
     return (
       <div className="App">
@@ -32,7 +41,7 @@ class App extends Component {
           </a>
         </header>
         <ContactList contacts={this.state.contacts}/>
-        <AddContact />
+        <AddContact submitUser={this.handleAddContact}/>
       </div>
     );
   }
